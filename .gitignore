@@ -1,0 +1,16 @@
+# Generated dependencies and build output
+node_modules/
+.next/
+
+# Local source archive and working materials
+YUQIAN-EPK-GITHUB-UPLOAD.zip
+Website Elements/
+
+# Original high-resolution videos; the site uses matching compressed files in public/videos-web/
+public/videos/anthropology-security-guard.mp4
+public/videos/fifa-world-cup-players.mp4
+public/videos/flourishing-fair-goldfoil.mov
+public/videos/realtime-audiovisual-vj.mp4
+public/videos/valorant-ascent-6k.mp4
+public/videos/valorant-corridor-ace.mp4
+public/videos/village-life.mp4

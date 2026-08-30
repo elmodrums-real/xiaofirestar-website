@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DoorDash Chronicles</title>
+  <style>
+    :root { color-scheme: dark; --ink:#120625; --paper:#fff7e6; --pink:#ff3fa4; --yellow:#fff159; --blue:#38d3e6; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; overflow-x:hidden; color:var(--paper); background:radial-gradient(circle at 18% 16%,rgba(255,63,164,.4),transparent 27%),radial-gradient(circle at 82% 76%,rgba(56,211,230,.26),transparent 30%),linear-gradient(140deg,#100224,#291078 56%,#0b173c); font:16px/1.55 Arial,sans-serif; }
+    body::before { content:"✦  ·  ✧  ·  ✦  ·  ✧  ·  ✦"; position:fixed; inset:5% 0 auto; color:rgba(255,241,89,.6); text-align:center; letter-spacing:2.3rem; font-size:1.3rem; pointer-events:none; }
+    main { width:min(760px,calc(100% - 2rem)); margin:3rem auto; padding:clamp(1.4rem,5vw,3rem); border:1px solid rgba(255,255,255,.4); border-radius:1.5rem; box-shadow:14px 14px 0 rgba(255,63,164,.45),0 1.5rem 4rem rgba(0,0,0,.45); background:rgba(17,5,48,.84); backdrop-filter:blur(12px); }
+    .eyebrow { margin:0 0 .4rem; color:var(--yellow); font:700 .72rem/1.2 ui-monospace,monospace; letter-spacing:.15em; }
+    h1 { margin:0; font-size:clamp(2.3rem,8vw,4.9rem); line-height:.9; letter-spacing:-.08em; }
+    h1 i { color:var(--pink); font-family:Georgia,serif; font-weight:400; letter-spacing:-.06em; }
+    .status { margin:.8rem 0 2rem; color:var(--blue); font:700 .72rem/1.2 ui-monospace,monospace; letter-spacing:.1em; }
+    #story { min-height:12rem; }
+    #story p { margin:0 0 1rem; white-space:pre-line; font-size:clamp(1rem,2.1vw,1.18rem); }
+    .choices { display:grid; gap:.7rem; margin-top:1.7rem; }
+    button { appearance:none; width:100%; padding:.85rem 1rem; border:1px solid rgba(255,255,255,.6); border-radius:.7rem; color:var(--paper); background:rgba(255,255,255,.08); font:700 .88rem/1.2 ui-monospace,monospace; text-align:left; cursor:pointer; transition:transform .18s,background .18s,border-color .18s; }
+    button:hover,button:focus-visible { outline:none; transform:translateX(.35rem); border-color:var(--yellow); background:var(--pink); }
+    .restart { margin-top:2rem; padding:0; border:0; color:var(--yellow); background:none; font-size:.75rem; text-decoration:underline; }
+    .restart:hover,.restart:focus-visible { transform:none; color:var(--blue); background:none; }
+    footer { margin-top:1.5rem; color:rgba(255,255,255,.56); font-size:.68rem; }
+    @media (prefers-reduced-motion: reduce) { *,*::before { transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">INTERACTIVE NARRATIVE / REMADE FROM SURVIVING TEXT</p>
+    <h1>DoorDash<br><i>Chronicles.</i></h1>
+    <p class="status" id="status">YOUR PHONE IS RINGING...</p>
+    <section id="story" aria-live="polite"></section>
+    <button class="restart" type="button" id="restart">Restart the story ↺</button>
+    <footer>Original concept and surviving story text by Yuqian. This recovered edition rebuilds the playable pathways.</footer>
+  </main>
+  <script>
+    const nodes = {
+      start: {
+        text: `You sit on the big, comfy couch and scroll through movie options on the projector. Your roommate Bens calls.\n\nThe traffic on the 101 is terrible; they will be late. Your car keys — and the house keys — are with them. You cannot leave without locking yourself out.\n\n"Did you eat today yet?" Bens asks.`,
+        choices: [["Not yet", "notYet"], ["Well, I drank some water earlier...", "water"], ["Yeah, I did", "lied"], ["Ignore the call", "ignore"]]
+      },
+      ignore: {
+        text: `You ignore the phone. It is your alone time.\n\nA missed-call icon flashes, then a DoorDash notification covers it: 50% off your next purchase. You do not remember downloading the app. The screen turns red.\n\nBens calls again.`,
+        choices: [["Pick up the phone", "start"], ["Open the DoorDash notification", "app"]]
+      },
+      notYet: {
+        text: `"Not yet," you admit. "I'll get around to it later."\n\n"Make sure you eat something today," Bens says. "You always wait until you're starving to death."\n\nBefore you can reply, your phone screen turns bright red with a white D.`,
+        choices: [["Throw the phone to the side", "phoneSide"], ["Open the app", "app"]]
+      },
+      water: {
+        text: `"Well, I drank some water earlier..."\n\n"Water is not a meal," Bens says. "You always wait until you're starving to death."\n\nThe DoorDash app opens by itself. A voice from your phone says: "BUY FROM DOORDASH NOW!"`,
+        choices: [["Throw the phone to the side", "phoneSide"], ["Open the app", "app"]]
+      },
+      lied: {
+        text: `"Yeah, I ate some food earlier," you lie.\n\n"Why do I feel like you're lying?" Bens asks. Then the call cuts out.\n\nYour phone screen becomes a bright red DoorDash logo.`,
+        choices: [["Ask Bens about DoorDash", "app"], ["Throw the phone to the side", "phoneSide"]]
+      },
+      phoneSide: {
+        text: `You throw the phone onto the couch. It bounces once — then speaks again.\n\n"$20 OFF. $15 OFF. $10 OFF."\n\nThe refrigerator door clicks open downstairs.`,
+        choices: [["Go to the kitchen", "kitchen"], ["Call Branav", "branav"], ["Break the phone", "breakPhone"]]
+      },
+      app: {
+        text: `The DoorDash screen has only one button: ORDER NOW. Every menu item has been replaced by a single word: HUNGRY.\n\nA notification says your delivery is already on the way — but you did not order anything.`,
+        choices: [["I didn't order anything!", "kitchen"], ["I think I got hacked!", "branav"], ["Smash the phone", "breakPhone"]]
+      },
+      kitchen: {
+        text: `The kitchen light is on. The refrigerator hangs open, glowing red instead of white.\n\nInside: applesauce, string cheese, a hard-boiled egg, half a cookie, pasta sauce, and Boatly Oat Milk. A delivery chime rings from outside.`,
+        choices: [["Eat the string cheese", "eat"], ["Drink the Boatly Oat Milk", "eat"], ["Check outside", "outside"], ["Find something to fight with", "fight"]]
+      },
+      eat: {
+        text: `You eat something — anything. The red light flickers.\n\nYour phone vibrates: "THANK YOU FOR TAKING CARE OF YOURSELF."\n\nThe DoorDash app shuts down. Bens arrives ten minutes later with your keys and a bewildered look.`,
+        choices: [["Accept reality", "endingSafe"], ["Tell Bens everything", "endingTell"]]
+      },
+      branav: {
+        text: `"Branav, I need your expertise urgently!"\n\nAfter a long pause, Branav replies: "Does the phone work?" You look down. The app is typing by itself: WE NEED TO GO.`,
+        choices: [["Try to call Bens", "outside"], ["Close the fridge and run upstairs", "upstairs"], ["Smash the phone", "breakPhone"]]
+      },
+      outside: {
+        text: `Outside, a DoorDash bag sits on the porch. There is no driver. The receipt says: FOR THE ONE WHO IS STARVING.\n\nThe bag moves. Your phone says: "RATE DOORDASH."`,
+        choices: [["Sneak out the window", "endingEscape"], ["Rush the door", "endingDoor"], ["Go back upstairs", "upstairs"]]
+      },
+      upstairs: {
+        text: `Upstairs, the projector is playing static. In the static, you can see yourself on the couch — still holding the phone.\n\nA message appears: CHOOSE YOUR PATH.`,
+        choices: [["Get ready to fight", "fight"], ["Jump out of the window", "endingEscape"], ["Plead to the phone", "endingTell"]]
+      },
+      fight: {
+        text: `You grab the closest thing you can find: a clothes hanger. The phone starts laughing.\n\nThen Bens finally unlocks the front door. The red glow vanishes, the delivery bag is gone, and the refrigerator light is normal again.`,
+        choices: [["Explain things to them", "endingTell"], ["Pretend nothing happened", "endingSafe"]]
+      },
+      breakPhone: {
+        text: `You smash the phone. The room goes silent.\n\nThen every device in the house lights up with the same red D. On the projector, a coupon floats across the wall: 50% OFF YOUR NEXT CHANCE.`,
+        choices: [["Run away", "endingEscape"], ["Accept reality", "endingDoor"]]
+      },
+      endingSafe: { text: `ENDING: THE COUPON EXPIRES\n\nYou eat, charge your phone, and delete three apps you never remember downloading. Nothing happens for a whole week.\n\nThen a push notification appears: "Hungry?"`, choices: [] },
+      endingTell: { text: `ENDING: CUSTOMER SUPPORT\n\nBens believes you. Branav does not. Together, you write a detailed complaint to DoorDash customer support.\n\nThey reply instantly: "Your feedback is important to us."`, choices: [] },
+      endingEscape: { text: `ENDING: OUT FOR DELIVERY\n\nYou escape the house, but every street sign points toward the nearest restaurant. Somewhere behind you, a delivery chime rings.`, choices: [] },
+      endingDoor: { text: `ENDING: FIVE STARS\n\nYou open the door. The bag is gone. The screen of your broken phone glows on the floor: "Thank you for your order."`, choices: [] }
+    };
+    const story = document.getElementById('story'); const status = document.getElementById('status');
+    function render(id) { const node = nodes[id]; story.innerHTML = `<p>${node.text.replace(/\n/g,'<br>')}</p><div class="choices">${node.choices.map(([label,next]) => `<button type="button" data-next="${next}">${label}</button>`).join('')}</div>`; status.textContent = node.choices.length ? 'YOUR CHOICE CHANGES THE STORY...' : 'STORY COMPLETE'; story.querySelectorAll('[data-next]').forEach(button => button.addEventListener('click',() => render(button.dataset.next))); }
+    document.getElementById('restart').addEventListener('click',() => render('start')); render('start');
+  </script>
+</body>
+</html>
