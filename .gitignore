@@ -14,3 +14,10 @@ public/videos/realtime-audiovisual-vj.mp4
 public/videos/valorant-ascent-6k.mp4
 public/videos/valorant-corridor-ace.mp4
 public/videos/village-life.mp4
+
+# Personal academic documents retained locally but excluded from the public site
+public/documents/dancing-robot-paper.pdf
+public/documents/female-gaming-experience-thesis.pdf
+public/documents/gamer-girl-experience-logbook.pdf
+public/documents/robotics-final-paper.pdf
+public/projects/gamer-girl-experience.html

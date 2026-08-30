@@ -348,7 +348,6 @@ export const technicalProjects = [
     video: "/videos/dancing-robot.mp4",
     tools: "ROBOTICS · MECHANICAL DESIGN · MOVEMENT STUDIES",
     text: "A robotics-class concept project exploring the mechanics, movement language, and design idea behind a dancing robot.",
-    paperUrl: "/documents/dancing-robot-paper.pdf",
   },
   {
     title: "Platform Fighter",
@@ -375,17 +374,13 @@ export const technicalProjects = [
     title: "Gamer Girl Experience",
     visual: "capstone",
     tools: "INTERACTIVE MEDIA RESEARCH · TWINE · HARLOWE · MIXED METHODS",
-    text: "A graduation capstone investigating how culture, geography, and game servers shape the experiences of women in competitive FPS games. Research across Chinese, Asian, and North American contexts informed a playable interactive narrative, a 109-page process logbook, thesis, and project documentation.",
-    paperUrl: "/documents/female-gaming-experience-thesis.pdf",
-    logbookUrl: "/documents/gamer-girl-experience-logbook.pdf",
-    prototypeUrl: "/projects/gamer-girl-experience.html"
+    text: "An interactive-media research project investigating how culture, geography, and game servers shape the experiences of women in competitive FPS games. Research across Chinese, Asian, and North American contexts informed this branching interactive narrative."
   },
   {
     title: "Robotics Final Project",
     image: "/images/tech-free-will-science.png",
     tools: "ROBOTICS · FINAL PROJECT · RESEARCH & DESIGN",
-    text: "Final-project research from robotics class. A project visual will be added soon; in the meantime, explore the paper for the full concept and process.",
-    paperUrl: "/documents/robotics-final-paper.pdf",
+    text: "Final-project research from robotics class, focused on the project concept, mechanics, and design process. A project visual will be added soon.",
   },
   {
     title: "Interactive Narrative — DoorDash Chronicles",
@@ -397,10 +392,10 @@ export const technicalProjects = [
 ];
 
 export const socialProfiles = [
-  { platform: "TikTok", handle: "@elmodrums", followers: "20700", audience: "Audience snapshot", audienceSnapshot: { ages: ["18–24 (34.5%)", "25–34 (41.8%)"], secondaryAgeLabel: "Viewers", ageByGender: ["18–24 (43.1%) · 25–34 (38.6%)"], male: 42, female: 58, countries: ["US", "UK", "Canada", "Australia", "Germany"] }, url: "https://www.tiktok.com/@elmodrums" },
-  { platform: "RedNote", handle: "@elmodrums", followers: "8200", audience: "Audience snapshot", audienceSnapshot: { ages: ["Under 18 (32%)", "18–24 (29%)", "25–34 (22%)"], male: 6, female: 94, regionsLabel: "Top cities", regions: ["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Tianjin", "Chengdu"] }, url: "#" },
-  { platform: "Douyin", handle: "@elmodrums", followers: "5800", audience: "Audience snapshot", audienceSnapshot: { ages: ["Under 23 (35%)", "24–30 (19%)", "31–40 (29%)"], male: 56, female: 44, regionsLabel: "Top provinces", regions: ["Guangdong", "Shanghai", "Jiangsu", "Shandong", "Beijing", "Henan"] }, url: "#" },
-  { platform: "Instagram", handle: "@elmodrums", followers: "3000", audience: "Audience snapshot", audienceSnapshot: { ages: ["18–24 (25.5%)", "25–34 (52.4%)"], secondaryAgeLabel: "Age by gender", ageByGender: ["Women: 18–24 (35%) · 25–34 (47.2%)", "Men: 18–24 (17.2%) · 25–34 (57%)"], male: 60.7, female: 39.3, cities: ["Shanghai", "Los Angeles", "New York", "Hong Kong", "Seoul", "Chennai"], countries: ["USA", "China", "South Korea", "India", "Indonesia"] }, url: "https://www.instagram.com/elmodrums/" },
+  { platform: "TikTok", handle: "@elmodrums", followers: "20700", audience: "Audience snapshot", audienceSnapshot: { male: 42, female: 58, countries: ["US", "UK", "Canada", "Australia", "Germany"] }, url: "https://www.tiktok.com/@elmodrums" },
+  { platform: "RedNote", handle: "@elmodrums", followers: "8200", audience: "Audience snapshot", audienceSnapshot: { male: 6, female: 94, regionsLabel: "Top cities", regions: ["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Tianjin", "Chengdu"] }, url: "#" },
+  { platform: "Douyin", handle: "@elmodrums", followers: "5800", audience: "Audience snapshot", audienceSnapshot: { male: 56, female: 44, regionsLabel: "Top provinces", regions: ["Guangdong", "Shanghai", "Jiangsu", "Shandong", "Beijing", "Henan"] }, url: "#" },
+  { platform: "Instagram", handle: "@elmodrums", followers: "3000", audience: "Audience snapshot", audienceSnapshot: { male: 60.7, female: 39.3, cities: ["Shanghai", "Los Angeles", "New York", "Hong Kong", "Seoul", "Chennai"], countries: ["USA", "China", "South Korea", "India", "Indonesia"] }, url: "https://www.instagram.com/elmodrums/" },
 ];
 
 export const instagramEmbeds = [
